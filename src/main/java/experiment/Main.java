@@ -75,7 +75,7 @@ public class Main {
         }
 
         if ((currentIndex = getIndexOfOption("-s", args)) != -1) {
-            buildSubject(currentIndex + 1, args);
+            buildSubject(currentIndex + 1, args); //args should contain "program"Manager
         }
 
         if ((currentIndex = getIndexOfOption("-exp", args)) != -1) {
@@ -205,8 +205,7 @@ public class Main {
     }
 
     public static void buildSubject(int index, String[] args) throws Exception {
-        // TODO: the name of the manager should be passed as paramater to the main
-	manager = (Manager) Main.class.getClassLoader().loadClass("QuickSortManager").getDeclaredConstructor(int.class, int.class, int.class).newInstance(numberOfTask, sizeOfTask, seed);
+    		manager = (Manager) Main.class.getClassLoader().loadClass(args[index]).getDeclaredConstructor(int.class, int.class, int.class).newInstance(numberOfTask, sizeOfTask, seed);
 
     }
 
